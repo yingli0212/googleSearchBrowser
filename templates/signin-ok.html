@@ -1,0 +1,22 @@
+<html>
+<head>
+  <title>Welcome, {{ username }}</title>
+</head>
+<body>
+  <style>
+    form {
+    	text-align: center;
+    }
+    body {
+        background-image: url('../static/pexels-eberhard-grossgasteiger-1287145.jpg');
+        background-size: 100% 100%;
+    }
+  </style>
+  <p>Welcome, {{ username }}!</p>
+  <form action="/search" method="post">
+    <legend>Please enter the keyword:</legend>
+    <p><input name="keyword" placeholder="Keyword" value="{{ keyword }}"></p>
+    <p><button type="submit">Search</button></p>
+  </form>
+</body>
+</html>
