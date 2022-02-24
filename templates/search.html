@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Search in Google</title>
+  <style>
+/*
+    table, tr,td, th {
+      border: 1px solid;
+      }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      }
+*/
+  </style>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+
+<style>
+    body {
+         background-image: url('../static/pexels-eberhard-grossgasteiger-1287145.jpg');
+    }
+</style>>
+<body>
+  <table>
+	  <tbody id="tbody1">Searchresults are here:
+	  </tbody>
+  </table>
+  <script>
+    obj = {{ data|tojson }}
+	var trs = "";
+    $.each(obj, function (n, value) {
+      trs += "<tr><td>" + n + "</td> <td>" + value + "</td></tr>";
+	  document.getElementById("tbody1").innerHTML=trs
+      });
+  </script>
+</body>
+</html>
