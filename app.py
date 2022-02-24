@@ -37,11 +37,21 @@ def signin():
 
 @app.route('/search', methods=['POST'])
 def search():
+    # show all searchresults on the webpage directly
     keyword = request.form['keyword']
-    filename = tParser_Post.searchresults(keyword)
+    filename = tParser_Post.searchresults(keyword)  # json file
     io = open(filename, "r")
-    dictionary = json.load(io)
-    return render_template('search.html', movies=json.dumps(dictionary))
+    dictionary = json.load(io)  # jsonfile to python object
+    print(dictionary)
+    return render_template('search.html', data=dictionary)  # Content of dictionary will be shown on the webpage
+
+###########################################
+#   another option to show a download link on the webpage
+#    keyword = request.form['keyword']
+#    filename = tParser_Post.searchresults(keyword)  # json file
+#    return render_template('search_old.html', filename=filename)   # A link for downloading of file is available on the
+# webpage
+###########################################
 
 
 if __name__ == '__main__':

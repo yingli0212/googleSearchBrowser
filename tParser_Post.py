@@ -7,6 +7,7 @@ import json
 import traceback
 import requests
 from bs4 import BeautifulSoup
+import os
 
 
 #   Anzeige im Googlesearch wird hier ausgeschlossen
@@ -31,13 +32,13 @@ def searchresults(keyword):
             if len(elements) <= 10:
                 for i in range(len(elements)):
                     title = elements[i].find("h3", {"class": "LC20lb MBeuO DKV0Md"}).text
-                    link = elements[i].find("a", href=True)['href']
+                    link = "    " + elements[i].find("a", href=True)['href']
                     key = 'Searchresult[' + str(i) + ']'
                     result[key] = [title, link]
             else:
                 for i in range(10):
                     title = elements[i].find("h3", {"class": "LC20lb MBeuO DKV0Md"}).text
-                    link = elements[i].find("a", href=True)['href']
+                    link = "    " + elements[i].find("a", href=True)['href']
                     key = 'Searchresult[' + str(i) + ']'
                     result[key] = [title, link]
 
@@ -50,7 +51,9 @@ def searchresults(keyword):
 #                    link = elements_add[j].find("a", href=True)['href']
 #                    key = 'Searchresult[' + str(j+len(elements)) + ']'
 #                    result[key] = [title, link]
-        filename = "result_getMethode_2.json"
+#        filename = "result_getMethode_2.json"
+#        filename = os.path.abspath("result_getMethode.json")
+        filename = "static/result_getMethode.json"
         with open(filename, "w") as outfile:
             json.dump(result, outfile)
         return filename
